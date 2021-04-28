@@ -25,11 +25,7 @@ function checksExistsUserAccount(request, response, next) {
 
 function checksCreateTodosUserAvailability(request, response, next) {
   const { user } = request;
-
-  //const user = users.find((user) => user.username === username);
   const totalTodos = user.todos.length;
-
-  console.log(user);
 
   if (!user.pro && totalTodos >= 10) {
     return response.status(403).json({error: "Limit of 10 todos for the free plan!"});
